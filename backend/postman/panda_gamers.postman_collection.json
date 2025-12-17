@@ -1,0 +1,145 @@
+{
+  "info": {
+    "_postman_id": "panda-gamers-collection",
+    "name": "PandaGamers Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Usuario Prueba\",\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": [ "{{baseUrl}}" ], "path": [ "auth", "register" ] }
+          },
+          "response": []
+        },
+        {
+          "name": "Login (set token)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": [ "{{baseUrl}}" ], "path": [ "auth", "login" ] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Guardar token y userId en las variables del entorno para uso en peticiones protegidas",
+                  "const res = pm.response.json();",
+                  "if (res && res.token) {",
+                  "    pm.environment.set('token', res.token);",
+                  "}",
+                  "if (res && res.user && res.user.id) {",
+                  "    pm.environment.set('userId', res.user.id);",
+                  "}",
+                  "pm.test('Login returns token', function () { pm.expect(res.token).to.be.a('string'); });"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/products", "host": [ "{{baseUrl}}" ], "path": [ "products" ] }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product (ADMIN)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"PlayStation 5\",\n  \"descripcion\": \"Consola\",\n  \"precio\": 499.99,\n  \"stock\": 10,\n  \"imagen\": \"url\",\n  \"categoria\": \"Consolas\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/products/create", "host": [ "{{baseUrl}}" ], "path": [ "products", "create" ] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[ { \"productId\": \"PRODUCT_ID\", \"cantidad\": 1 } ]",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/orders/create/{{userId}}", "host": [ "{{baseUrl}}" ], "path": [ "orders", "create", "{{userId}}" ] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transbank",
+      "item": [
+        {
+          "name": "Create Transbank Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/pay/create?orderId={{orderId}}", "host": [ "{{baseUrl}}" ], "path": [ "pay", "create" ], "query": [ { "key": "orderId", "value": "{{orderId}}" } ] }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Transaction (simulado)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/pay/confirm/{{transactionToken}}", "host": [ "{{baseUrl}}" ], "path": [ "pay", "confirm", "{{transactionToken}}" ] }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": []
+}

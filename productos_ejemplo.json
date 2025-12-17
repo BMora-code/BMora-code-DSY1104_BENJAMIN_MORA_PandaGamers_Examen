@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "name": "PlayStation 5",
+    "description": "Consola de última generación con tecnología SSD ultrarrápida, 4K gaming a 120fps",
+    "price": 499.99,
+    "category": "Consolas",
+    "image": "/images/Consolas/PlayStation 4 Pro.avif",
+    "stock": 10
+  },
+  {
+    "id": "2",
+    "name": "Xbox Series X",
+    "description": "Consola Microsoft con procesador de 8 núcleos, 12 TFLOPS de potencia gráfica",
+    "price": 499.99,
+    "category": "Consolas",
+    "image": "/images/Consolas/PlayStation 4 Pro.avif",
+    "stock": 8
+  },
+  {
+    "id": "3",
+    "name": "Nintendo Switch",
+    "description": "Consola híbrida portátil y de sobremesa, ideal para jugar en cualquier lugar",
+    "price": 299.99,
+    "category": "Consolas",
+    "image": "/images/Consolas/PlayStation 4 Pro.avif",
+    "stock": 15
+  },
+  {
+    "id": "4",
+    "name": "HyperX Fury S Pro",
+    "description": "Mousepad profesional de alta precisión, superficie optimizada para gaming competitivo",
+    "price": 39.99,
+    "category": "Accesorios",
+    "image": "/images/Portamouse/HyperX Fury S.avif",
+    "stock": 25
+  },
+  {
+    "id": "5",
+    "name": "Logitech G Pro X Superlight",
+    "description": "Ratón gaming ultraligero de 63g, sensor Hero 25600 DPI",
+    "price": 129.99,
+    "category": "Mouses",
+    "image": "/images/Mouses/HyperX Fury S.avif",
+    "stock": 15
+  },
+  {
+    "id": "6",
+    "name": "Razer DeathAdder V3",
+    "description": "Ratón ergonómico con 30000 DPI, cable Speedflex ultrarápido",
+    "price": 89.99,
+    "category": "Mouses",
+    "image": "/images/Mouses/HyperX Fury S.avif",
+    "stock": 20
+  },
+  {
+    "id": "7",
+    "name": "Secretlab Titan Evo 2022",
+    "description": "Silla gaming premium con soporte lumbar ajustable, reclinación hasta 170º",
+    "price": 399.99,
+    "category": "Sillas",
+    "image": "/images/Sillas/HyperX Fury S.avif",
+    "stock": 5
+  },
+  {
+    "id": "8",
+    "name": "Herman Miller x Logitech",
+    "description": "Silla de trabajo ergonómica diseñada para largas sesiones de gaming",
+    "price": 1299.99,
+    "category": "Sillas",
+    "image": "/images/Sillas/HyperX Fury S.avif",
+    "stock": 3
+  },
+  {
+    "id": "9",
+    "name": "Gaming PC Gamer Pro",
+    "description": "Computadora gaming high-end con RTX 4090, Intel i9-13900K, 32GB RAM",
+    "price": 3499.99,
+    "category": "Pc Gamers",
+    "image": "/images/Pc Gamers/HyperX Fury S.avif",
+    "stock": 2
+  },
+  {
+    "id": "10",
+    "name": "Gaming PC Creator",
+    "description": "PC versátil para gaming y contenido creativo, RTX 4070 Ti, Ryzen 7 7700X",
+    "price": 2499.99,
+    "category": "Pc Gamers",
+    "image": "/images/Pc Gamers/HyperX Fury S.avif",
+    "stock": 4
+  },
+  {
+    "id": "11",
+    "name": "Polera Gamer Logo PandaGamers",
+    "description": "Polera de algodón 100% con estampado del logo de PandaGamers",
+    "price": 24.99,
+    "category": "Poleras",
+    "image": "/images/Poleras/HyperX Fury S.avif",
+    "stock": 50
+  },
+  {
+    "id": "12",
+    "name": "Polera Retro Gaming",
+    "description": "Polera unisex con diseño vintage de consolas clásicas",
+    "price": 29.99,
+    "category": "Poleras",
+    "image": "/images/Poleras/HyperX Fury S.avif",
+    "stock": 40
+  },
+  {
+    "id": "13",
+    "name": "Polerón Gaming XL",
+    "description": "Polerón cómodo con bolsillos, ideal para sesiones largas de gaming",
+    "price": 44.99,
+    "category": "Polerones",
+    "image": "/images/Polerones/HyperX Fury S.avif",
+    "stock": 30
+  },
+  {
+    "id": "14",
+    "name": "Polerón Técnico PandaGamers",
+    "description": "Polerón transpirable con tecnología moisture-wicking",
+    "price": 59.99,
+    "category": "Polerones",
+    "image": "/images/Polerones/HyperX Fury S.avif",
+    "stock": 25
+  },
+  {
+    "id": "15",
+    "name": "Portamouse Gaming",
+    "description": "Portamouse de neopreno con base antideslizante",
+    "price": 19.99,
+    "category": "Portamouse",
+    "image": "/images/Portamouse/HyperX Fury S.avif",
+    "stock": 60
+  },
+  {
+    "id": "16",
+    "name": "Magic The Gathering Booster",
+    "description": "Booster pack del TCG Magic The Gathering",
+    "price": 4.99,
+    "category": "Juegos de mesa",
+    "image": "/images/Juegos de mesa/HyperX Fury S.avif",
+    "stock": 100
+  },
+  {
+    "id": "17",
+    "name": "Pokémon TCG Elite Trainer Box",
+    "description": "Caja Elite Trainer de Pokémon con booster packs y accesorios",
+    "price": 39.99,
+    "category": "Juegos de mesa",
+    "image": "/images/Juegos de mesa/HyperX Fury S.avif",
+    "stock": 75
+  },
+  {
+    "id": "18",
+    "name": "Corsair K95 Platinum",
+    "description": "Teclado mecánico gaming RGB con teclas cherry mx speed",
+    "price": 199.99,
+    "category": "Accesorios",
+    "image": "/images/Accesorios/HyperX Fury S.avif",
+    "stock": 12
+  },
+  {
+    "id": "19",
+    "name": "Headset HyperX Cloud Revolver",
+    "description": "Auriculares gaming con audio 7.1 y micrófono removible",
+    "price": 119.99,
+    "category": "Accesorios",
+    "image": "/images/Accesorios/HyperX Fury S.avif",
+    "stock": 18
+  },
+  {
+    "id": "20",
+    "name": "Monitor LG UltraWide 34 pulgadas",
+    "description": "Monitor ultrawide para gaming inmersivo, 144Hz, G-Sync",
+    "price": 449.99,
+    "category": "Accesorios",
+    "image": "/images/Accesorios/HyperX Fury S.avif",
+    "stock": 8
+  }
+]

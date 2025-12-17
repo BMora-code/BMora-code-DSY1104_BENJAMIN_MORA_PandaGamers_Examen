@@ -1,0 +1,28 @@
+Metodo HTTP,Ruta del Endpoint,Descripción,Datos de entrada,Respuestas,API PÚBLICA/PRIVADA,Requiere Autenticación,Roles permitidos,Observaciones
+POST,/auth/register,"Registrar nuevo usuario y generar JWT (opcional adminCode)","{ nombre/name, email, password, adminCode? }","200: Usuario registrado; 400: Email/password requeridos; 409: Email ya registrado; 500: Error servidor",PÚBLICA,No,N/A,"adminCode opcional para crear ADMIN"
+POST,/auth/login,"Autenticar usuario y obtener token JWT","{ email, password }","200: Login exitoso; 400: Email/password requeridos; 401: Credenciales inválidas; 404: Usuario no encontrado; 500: Error servidor",PÚBLICA,No,N/A,"Retorna token en body"
+GET,/products,"Listar productos (inserta productos iniciales si vacío)",N/A,"200: Éxito; 500: Error servidor",PÚBLICA,No,N/A,"Devuelve ProductResponse[]"
+GET,/products/{id},"Obtener producto por ID",N/A,"200: Éxito; 404: No encontrado; 500: Error servidor",PÚBLICA,No,N/A,"Devuelve ProductResponse"
+POST,/products/create,"Crear producto","Product (JSON)","200: Producto creado; 400: Datos inválidos; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,"@PreAuthorize('hasRole("ADMIN")')"
+PUT,/products/update/{id},"Actualizar producto","Product (JSON)","200: Actualizado; 400: Datos inválidos; 403: Acceso denegado; 404: No encontrado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+DELETE,/products/delete/{id},"Eliminar producto",N/A,"200: Eliminado; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+PUT,/products/admin/stock/{id},"Actualizar stock","{ stock:int }","200: Stock actualizado; 400: Datos inválidos; 403: Acceso denegado; 404: No encontrado; 500: Error servidor",PRIVADA,Sí,ADMIN,"Protegido a nivel HTTP y por PreAuthorize"
+POST,/products/import,"Importar lote de productos","ImportProductRequest (lista)","200: Productos importados; 400: No hay productos para importar; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,"Actualiza por nombre si existe"
+POST,/offers/create,"Crear oferta / promoción","Offer (JSON)","200: Oferta creada; 400: Datos inválidos; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+PUT,/offers/update/{id},"Actualizar oferta","Offer (JSON)","200: Oferta actualizada; 400: Datos inválidos; 403: Acceso denegado; 404: No encontrado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+DELETE,/offers/delete/{id},"Eliminar oferta",N/A,"200: Eliminada; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+GET,/offers/admin/all,"Listar ofertas (admin)",N/A,"200: Éxito; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+GET,/offers/all/public,"Listar ofertas públicas",N/A,"200: Éxito; 500: Error servidor",PÚBLICA,No,N/A,"Endpoint público visible al frontend"
+POST,/orders/create/{userId},"Crear nueva orden (valida stock, aplica DUOC)","CreateOrderRequest (items, subtotal, shippingCost, iva, total, deliveryOption, shippingInfo)","200: Orden creada; 400: Datos inválidos o stock insuficiente; 500: Error servidor",PRIVADA,Sí,USER/ADMIN,"Requiere autenticación; admin endpoints en /orders/admin/**"
+GET,/orders/user/{userId},"Obtener órdenes del usuario",N/A,"200: Éxito; 500: Error servidor",PRIVADA,Sí,USER/ADMIN,"Devuelve OrderResponse[]"
+GET,/orders/{id},"Obtener orden por ID",N/A,"200: Éxito; 404: No encontrada; 500: Error servidor",PRIVADA,Sí,USER/ADMIN,
+GET,/orders/admin/all,"Listar todas las órdenes (admin)",N/A,"200: Éxito; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+DELETE,/orders/admin/{id},"Eliminar orden (admin)",N/A,"200: Eliminada; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+PUT,/orders/{id}/complete,"Marcar orden completada",N/A,"200: Orden completada; 404: No encontrada; 500: Error servidor",PRIVADA,Sí,USER/ADMIN,"Cambia status a 'Completada'"
+PUT,/orders/{id}/status,"Actualizar estado de orden","{ status: 'NuevoEstado' }","200: Estado actualizado; 400: Datos inválidos; 404: No encontrada; 500: Error servidor",PRIVADA,Sí,USER/ADMIN,"Acepta JSON con status"
+GET,/users/profile,"Obtener perfil del usuario autenticado",N/A,"200: Éxito; 401: No autenticado; 404: Usuario no encontrado; 500: Error servidor",PRIVADA,Sí,USER/ADMIN,"Retorna datos del usuario sin password"
+GET,/users/admin/all,"Listar usuarios (admin)",N/A,"200: Éxito; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+DELETE,/users/admin/{id},"Eliminar usuario (admin)",N/A,"200: Eliminado; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,
+POST,/users/admin/create,"Crear usuario por admin","User (JSON)","200: Usuario creado; 400: Email/password requeridos; 403: Acceso denegado; 500: Error servidor",PRIVADA,Sí,ADMIN,"Si no se especifica rol, se crea USER por defecto"
+POST,/pay/create,"Crear transacción de pago (query params)","orderId, userId?, amount?, returnUrl?, finalUrl? (query params)","200: Transacción creada",PÚBLICA,No,N/A,"Devuelve PaymentResponse con token y url (sandbox)"
+GET,/pay/confirm/{token},"Confirmar transacción por token",N/A,"200: Confirmada; 404: Token no encontrado",PÚBLICA,No,N/A,"Devuelve ConfirmPaymentResponse"

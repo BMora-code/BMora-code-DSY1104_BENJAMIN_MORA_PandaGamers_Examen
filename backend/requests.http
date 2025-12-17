@@ -1,0 +1,51 @@
+### Registro
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "name": "Usuario Prueba",
+  "email": "user@example.com",
+  "password": "password123"
+}
+
+### Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+
+### Crear producto (ADMIN)
+POST http://localhost:8080/products/create
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "nombre": "PlayStation 5",
+  "descripcion": "Consola",
+  "precio": 499.99,
+  "stock": 10,
+  "imagen": "url",
+  "categoria": "Consolas"
+}
+
+### Crear orden
+POST http://localhost:8080/orders/create/{{USER_ID}}
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+[
+  { "productId": "PRODUCT_ID", "cantidad": 1 }
+]
+
+### Crear transacción Transbank
+POST http://localhost:8080/pay/create?orderId=ORDER_ID
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+
+### Confirmar transacción (simulado)
+GET http://localhost:8080/pay/confirm/{token}
+
